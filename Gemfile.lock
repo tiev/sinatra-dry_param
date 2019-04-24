@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra-dry_param (0.1.0)
+    sinatra-dry_param (0.0.1)
       dry-schema (>= 0.5.1)
       sinatra (>= 2.0)
 
