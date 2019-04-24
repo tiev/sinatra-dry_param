@@ -9,11 +9,14 @@ module Sinatra
 
     module Helpers
       def validate_params
-        # Intentional blank
+        schema = Dry::Schema.Params
+        schema.call(params)
       end
     end
 
     def self.registered(app)
+      require 'dry/schema'
+
       app.helpers DryParam::Helpers
     end
   end
