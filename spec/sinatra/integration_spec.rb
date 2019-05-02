@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Integration' do
   it 'works' do
     get '/'
