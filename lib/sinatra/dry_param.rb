@@ -2,13 +2,16 @@
 
 require 'sinatra/base'
 require 'sinatra/dry_param/version'
-require 'dry/initializer'
 
 module Sinatra
   module DryParam
     class InvalidParamsError < StandardError
-      extend Dry::Initializer
-      param :results
+      attr_reader :results
+
+      def initialize(msg, results)
+        @results = results
+        super(msg)
+      end
     end
 
     module Helpers
@@ -17,7 +20,7 @@ module Sinatra
         if result.success?
           result.to_h
         else
-          raise InvalidParamsError.new(results: result.errors) if settings.raise_dry_param_exceptions?
+          raise InvalidParamsError.new(result.errors.to_h.to_s, result.errors) if settings.raise_dry_param_exceptions?
 
           halt 400, result.errors.to_h.to_json
         end

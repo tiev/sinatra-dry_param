@@ -14,11 +14,21 @@ class App < Sinatra::Base
   end
 
   params do
-    # Intentional blank
+    required(:name)
   end
 
   get '/' do
     validate_params
     'OK'
+  end
+
+  params :paging do
+    required(:page).filled(:integer, gt?: 0)
+    required(:per_page).filled(:integer, gt?: 0)
+  end
+
+  get '/page' do
+    paging = validate_params :paging
+    paging.to_json
   end
 end
