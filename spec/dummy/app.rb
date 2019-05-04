@@ -31,4 +31,14 @@ class App < Sinatra::Base
     paging = validate_params :paging
     paging.to_json
   end
+
+  params :form do
+    required(:name).filled(:string)
+    required(:age).filled(:integer, gt?: 18)
+  end
+
+  post '/part' do
+    user = validate_params :form, params[:user]
+    user.to_json
+  end
 end
