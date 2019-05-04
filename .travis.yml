@@ -1,5 +1,4 @@
 ---
-sudo: false
 language: ruby
 cache: bundler
 rvm:
@@ -7,4 +6,5 @@ rvm:
   - 2.5.5
   - 2.4.6
   - jruby-9.2.7.0
-before_install: gem install bundler -v 1.17.3
+before_install:
+  - gem install bundler -v 1.17.3
