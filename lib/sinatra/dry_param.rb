@@ -27,8 +27,9 @@ module Sinatra
       end
     end
 
-    def params(name = :dry, &block)
-      set "#{name}_params", Dry::Schema.Params(&block)
+    def params(name = :dry, schema: nil, &block)
+      schema ||= Dry::Schema.Params(&block)
+      set "#{name}_params", schema
     end
 
     def self.registered(app)
