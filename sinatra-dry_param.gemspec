@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Params validation for sinatra based on dry-schema.'
   spec.description   = 'Define your params schema with the strong library dry-schema.'
-  spec.homepage      = 'https://github.com/tiev/sinatra-dry-param'
+  spec.homepage      = 'https://github.com/tiev/sinatra-dry_param'
   spec.license       = 'MIT'
 
   # Specify which files should be added to the gem when it is released.
