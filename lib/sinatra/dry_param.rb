@@ -16,7 +16,7 @@ module Sinatra
 
     module Helpers
       def validate_params(name = :dry, prs = params)
-        result = settings.send("#{name}_params").call(prs)
+        result = settings.send("#{name}_param_schema").call(prs)
         if result.success?
           result.to_h
         else
@@ -29,7 +29,7 @@ module Sinatra
 
     def params(name = :dry, schema: nil, &block)
       schema ||= Dry::Schema.Params(&block)
-      set "#{name}_params", schema
+      set "#{name}_param_schema", schema
     end
 
     def self.registered(app)
